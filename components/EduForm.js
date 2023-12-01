@@ -9,6 +9,19 @@ export function EduForm({
 }) {
 	return (
 		<FormWrapper>
+			<div>
+				<ol className='stepper'>
+					<li></li>
+					<li className='active'></li>
+					<li></li>
+				</ol>
+				<div className='step-title'>
+					<span>Personal Information</span>
+					<span>Education Background</span>
+					<span>Work Experirence</span>
+				</div>
+			</div>
+
 			<label className='form-label'>Highest Degree</label>
 
 			<select

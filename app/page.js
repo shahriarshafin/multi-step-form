@@ -48,9 +48,6 @@ export default function Home() {
 	return (
 		<main>
 			<form onSubmit={onSubmit}>
-				<div>
-					{currentStepIndex + 1} / {steps.length}
-				</div>
 				{step}
 				<div className='step-btn-group'>
 					{!isFirstStep && (

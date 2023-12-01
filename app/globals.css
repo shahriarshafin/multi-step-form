@@ -82,3 +82,75 @@ main {
 	border-radius: 3px;
 	background: #f4f4f5;
 }
+.step-title {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+}
+.step-title span {
+	text-align: center;
+	font-size: 18px;
+	color: rgba(0, 0, 0, 0.5);
+}
+.add-btn {
+	all: unset;
+	border-radius: 4px;
+	background: #f4f4f5;
+	color: black;
+	display: flex;
+	padding: 10px 0px;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	margin-top: 20px;
+	width: 100%;
+}
+ol.stepper {
+	display: flex;
+	list-style: none;
+	justify-content: space-between;
+	background: linear-gradient(lightgrey 0 0) no-repeat 50%
+		calc((4.5em - 5px) / 2) / 100% 5px;
+	counter-reset: step;
+	margin: 20px;
+	padding: 0;
+	font-size: 15px;
+	counter-reset: step;
+	overflow: hidden;
+}
+ol.stepper li {
+	display: grid;
+	place-items: center;
+	gap: 5px;
+	font-family: sans-serif;
+	position: relative;
+}
+ol.stepper li::before {
+	content: counter(step) ' ';
+	counter-increment: step;
+	display: grid;
+	place-content: center;
+	aspect-ratio: 1;
+	height: 4.5em;
+	border: 5px solid #fff;
+	box-sizing: border-box;
+	background: #3c76f6;
+	color: white;
+	border-radius: 50%;
+	font-family: monospace;
+	z-index: 1;
+}
+ol.stepper li.active ~ li::before {
+	background: lightgrey;
+	color: black;
+}
+ol.stepper li.active::after {
+	content: '';
+	position: absolute;
+	height: 5px;
+	right: 100%;
+	top: calc((4.5em - 5px) / 2);
+	width: 100vw;
+	background: #3c76f6;
+}

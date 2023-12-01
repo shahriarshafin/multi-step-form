@@ -9,6 +9,19 @@ export function ExperienceForm({
 }) {
 	return (
 		<FormWrapper>
+			<div>
+				<ol className='stepper'>
+					<li></li>
+					<li></li>
+					<li className='active'></li>
+				</ol>
+				<div className='step-title'>
+					<span>Personal Information</span>
+					<span>Education Background</span>
+					<span>Work Experirence</span>
+				</div>
+			</div>
+
 			<label className='form-label'>Company name</label>
 			<input
 				className='form-control'

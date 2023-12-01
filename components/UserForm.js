@@ -9,12 +9,23 @@ export function UserForm({
 	image,
 	updateFields,
 }) {
-	const [hobbiesList, setHobbiesList] = useState(hobbies);
+	const [hobbiesList, setHobbiesList] = useState(
+		hobbies.length > 0 ? hobbies : ['']
+	);
+
 	const addHobbyField = (e) => {
 		e.preventDefault();
 		if (hobbiesList.length < 5) {
 			setHobbiesList([...hobbiesList, '']);
 		}
+	};
+
+	const removeHobbyField = (index, event) => {
+		event.preventDefault();
+		const newHobbies = [...hobbiesList];
+		newHobbies.splice(index, 1);
+		setHobbiesList(newHobbies);
+		updateFields('hobbies', newHobbies);
 	};
 
 	const updateHobby = (index, value) => {
@@ -26,7 +37,19 @@ export function UserForm({
 
 	return (
 		<FormWrapper>
-			<label className='form-label'>Name</label>
+			<div>
+				<ol className='stepper'>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ol>
+				<div className='step-title'>
+					<span>Personal Information</span>
+					<span>Education Background</span>
+					<span>Work Experirence</span>
+				</div>
+			</div>
+			<label className='form-label'>Name*</label>
 			<input
 				className='form-control'
 				autoFocus
@@ -36,7 +59,7 @@ export function UserForm({
 				placeholder='Jhon Doe'
 				onChange={(e) => updateFields({ name: e.target.value })}
 			/>
-			<label className='form-label'>Email</label>
+			<label className='form-label'>Email*</label>
 			<input
 				className='form-control'
 				autoFocus
@@ -46,7 +69,7 @@ export function UserForm({
 				placeholder='yourmail@domain.com'
 				onChange={(e) => updateFields({ email: e.target.value })}
 			/>
-			<label className='form-label'>Phone Number</label>
+			<label className='form-label'>Phone Number*</label>
 			<input
 				className='form-control'
 				type='tel'
@@ -65,18 +88,25 @@ export function UserForm({
 				onChange={(e) => updateFields({ address: e.target.value })}
 			/>
 			<label className='form-label'>Hobbies ( max 5 )</label>
-			<button onClick={addHobbyField}>add more field</button>
+
 			{hobbiesList.map((hobby, index) => (
-				<input
-					key={index}
-					className='form-control'
-					autoFocus
-					type='text'
-					value={hobby}
-					placeholder='Reading, Writing, Coding'
-					onChange={(e) => updateHobby(index, e.target.value)}
-				/>
+				<div key={index} className='hobby-field'>
+					<input
+						className='form-control'
+						autoFocus
+						type='text'
+						value={hobby}
+						placeholder='Reading, Writing, Coding'
+						onChange={(e) => updateHobby(index, e.target.value)}
+					/>
+					<button onClick={(event) => removeHobbyField(index, event)}>
+						Remove
+					</button>
+				</div>
 			))}
+			<button className='add-btn' onClick={addHobbyField}>
+				+
+			</button>
 
 			<label className='form-label'>Image</label>
 
