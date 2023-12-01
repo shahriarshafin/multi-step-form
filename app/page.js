@@ -1,5 +1,4 @@
 'use client';
-import styles from './page.module.css';
 
 import { useState } from 'react';
 import { EduForm } from '../components/EduForm';
@@ -12,7 +11,7 @@ const INITIAL_DATA = {
 	email: '',
 	phone: '',
 	address: '',
-	hobbies: '',
+	hobbies: [],
 	image: '',
 	// .........
 	degree: '',
@@ -47,19 +46,21 @@ export default function Home() {
 	}
 
 	return (
-		<main className={styles.main}>
+		<main>
 			<form onSubmit={onSubmit}>
-				<div style={{ position: 'absolute', top: '.5rem', right: '.5rem' }}>
+				<div>
 					{currentStepIndex + 1} / {steps.length}
 				</div>
 				{step}
-				<div>
+				<div className='step-btn-group'>
 					{!isFirstStep && (
-						<button type='button' onClick={back}>
-							Back
+						<button className='step-btn' type='button' onClick={back}>
+							Previous
 						</button>
 					)}
-					<button type='submit'>{isLastStep ? 'Finish' : 'Next'}</button>
+					<button className='step-btn' type='submit'>
+						{isLastStep ? 'Submit' : 'Next'}
+					</button>
 				</div>
 			</form>
 		</main>

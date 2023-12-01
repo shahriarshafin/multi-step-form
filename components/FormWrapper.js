@@ -1,19 +1,11 @@
 export function FormWrapper({ children }) {
 	return (
-		<>
-			<h2 style={{ textAlign: 'center', margin: 0, marginBottom: '2rem' }}>
-				Registration Form
-			</h2>
-			<div
-				style={{
-					display: 'grid',
-					gap: '1rem .5rem',
-					justifyContent: 'flex-start',
-					gridTemplateColumns: 'auto minmax(auto, 400px)',
-				}}
-			>
-				{children}
-			</div>
-		</>
+		<div className='form-wrapper'>
+			<h3 className='form-heading'>Registration Form</h3>
+			<p className='form-description'>
+				Please fill out this form with the required information
+			</p>
+			<div>{children}</div>
+		</div>
 	);
 }

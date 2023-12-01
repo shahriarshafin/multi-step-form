@@ -9,36 +9,43 @@ export function EduForm({
 }) {
 	return (
 		<FormWrapper>
-			<label>Highest Degree</label>
-			<input
-				autoFocus
-				required
-				type='text'
+			<label className='form-label'>Highest Degree</label>
+
+			<select
+				className='form-control'
 				value={degree}
 				onChange={(e) => updateFields({ degree: e.target.value })}
-			/>
-			<label>Field of Study</label>
+			>
+				<option value='bsc'>BSC</option>
+				<option value='msc'>MSC</option>
+				<option value='ssc'>SSC</option>
+			</select>
+
+			<label className='form-label'>Field of Study</label>
 			<input
+				className='form-control'
 				autoFocus
-				required
 				type='text'
 				value={studyField}
+				placeholder='Computer Science, Physics, Chemistry'
 				onChange={(e) => updateFields({ studyField: e.target.value })}
 			/>
-			<label>Institution Name</label>
+			<label className='form-label'>Institution Name</label>
 			<input
+				className='form-control'
 				autoFocus
-				required
 				type='text'
 				value={institution}
+				placeholder='University of California'
 				onChange={(e) => updateFields({ institution: e.target.value })}
 			/>
-			<label>Graduation Year</label>
+			<label className='form-label'>Graduation Year</label>
 			<input
+				className='form-control'
 				autoFocus
-				required
 				type='number'
 				value={graduationYear}
+				placeholder='2022'
 				onChange={(e) => updateFields({ graduationYear: e.target.value })}
 			/>
 		</FormWrapper>
